@@ -1,6 +1,6 @@
 %define module  PDF-API2
 %define name    perl-%{module}
-%define version 0.60
+%define version 0.61
 %define release %mkrel 1
 
 Name:           %{name}
