@@ -1,6 +1,6 @@
 %define module  PDF-API2
 %define name    perl-%{module}
-%define version 0.61
+%define version 0.62
 %define release %mkrel 1
 
 Name:           %{name}
@@ -47,4 +47,3 @@ rm -rf %{buildroot}
 %doc AUTHORS CHANGELOG CONTACT COPYING INSTALL LICENSE README TODO VERSION contrib examples
 %{perl_vendorlib}/PDF
 %{_mandir}/*/*
-
