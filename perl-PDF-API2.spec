@@ -44,6 +44,6 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-, root, root)
-%doc AUTHORS CHANGELOG CONTACT COPYING INSTALL LICENSE README TODO VERSION contrib examples
+%doc AUTHORS CONTACT COPYING INSTALL LICENSE README TODO VERSION contrib examples
 %{perl_vendorlib}/PDF
 %{_mandir}/*/*
