@@ -1,7 +1,7 @@
 %define module  PDF-API2
 %define name    perl-%{module}
 %define version 0.62
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:           %{name}
 Version:        %{version}
@@ -37,7 +37,8 @@ perl -pi -e 'tr/\r//d' CHANGELOG LICENSE contrib/pdf-deoptimize.pl
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-rm -f %{buildroot}/%{perl_vendorlib}/PDF/API2/TTF/Win32.pm
+rm -f %{buildroot}%{perl_vendorlib}/PDF/API2/Win32.pm
+rm -f %{buildroot}%{perl_vendorlib}/PDF/API2/Basic/TTF/Win32.pm
 
 %clean
 rm -rf %{buildroot}
