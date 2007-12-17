@@ -16,7 +16,6 @@ BuildRequires:  perl-devel
 %endif
 BuildRequires:  perl(Compress::Zlib)
 Buildarch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 This module is 'The Next Generation' of Text::PDF::API which initially 
