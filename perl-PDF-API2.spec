@@ -1,6 +1,6 @@
 %define module  PDF-API2
 %define name    perl-%{module}
-%define version 0.68
+%define version 0.69
 %define release %mkrel 1
 
 Name:           %{name}
@@ -11,9 +11,7 @@ License:        Artistic
 Group:          Development/Perl
 URL:            http://search.cpan.org/dist/%{module}
 Source:         http://www.cpan.org/modules/by-module/PDF/%{module}-%{version}.tar.bz2
-%if %{mdkversion} < 1010
-BuildRequires:  perl-devel
-%endif
+Patch:          %{name}-0.69-man-pages.patch
 BuildRequires:  perl(Compress::Zlib)
 Buildarch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}
@@ -24,11 +22,11 @@ provided a nice API around the Text::PDF::* modules created by Martin Hosken.
 
 %prep
 %setup -q  -n %{module}-%{version}
+%patch -p 0
 find contrib -type f | xargs perl -pi -e 's|^#!/usr/local/bin/perl|#!/usr/bin/perl|' 
-perl -pi -e 'tr/\r//d' CHANGELOG LICENSE contrib/pdf-deoptimize.pl
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor MAN1PODS='' MAN3PODS=''
+%{__perl} Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
