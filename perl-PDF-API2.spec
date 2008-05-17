@@ -1,7 +1,7 @@
 %define module  PDF-API2
 %define name    perl-%{module}
 %define version 0.69
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name:           %{name}
 Version:        %{version}
@@ -13,6 +13,7 @@ URL:            http://search.cpan.org/dist/%{module}
 Source:         http://www.cpan.org/modules/by-module/PDF/%{module}-%{version}.tar.bz2
 Patch:          %{name}-0.69-man-pages.patch
 BuildRequires:  perl(Compress::Zlib)
+Requires:       fonts-ttf-dejavu
 Buildarch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}
 
@@ -37,6 +38,7 @@ rm -rf %{buildroot}
 %makeinstall_std
 rm -f %{buildroot}%{perl_vendorlib}/PDF/API2/Win32.pm
 rm -f %{buildroot}%{perl_vendorlib}/PDF/API2/Basic/TTF/Win32.pm
+rm -rf %{buildroot}%{perl_vendorlib}/PDF/API2/fonts
 
 %clean
 rm -rf %{buildroot}
