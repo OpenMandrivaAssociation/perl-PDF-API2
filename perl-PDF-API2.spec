@@ -1,6 +1,6 @@
 %define module  PDF-API2
 %define name    perl-%{module}
-%define version 0.72.003
+%define version 0.73
 %define release %mkrel 1
 
 Name:           %{name}
@@ -10,8 +10,8 @@ Summary:        PDF-API2 Perl module
 License:        Artistic
 Group:          Development/Perl
 URL:            http://search.cpan.org/dist/%{module}
-Source:         http://www.cpan.org/modules/by-module/PDF/%{module}-%{version}.tar.bz2
-Patch:          %{name}-0.69-man-pages.patch
+Source:         http://www.cpan.org/modules/by-module/PDF/%{module}-%{version}.tar.gz
+Patch:          %{name}-0.73-man-pages.patch
 BuildRequires:  perl(Compress::Zlib)
 Requires:       fonts-ttf-dejavu
 Buildarch:      noarch
@@ -23,7 +23,7 @@ provided a nice API around the Text::PDF::* modules created by Martin Hosken.
 
 %prep
 %setup -q  -n %{module}-%{version}
-%patch -p 0
+%patch -p 1
 find contrib -type f | xargs perl -pi -e 's|^#!/usr/local/bin/perl|#!/usr/bin/perl|' 
 
 %build
