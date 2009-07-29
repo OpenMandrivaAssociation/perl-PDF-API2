@@ -1,29 +1,29 @@
-%define module  PDF-API2
-%define name    perl-%{module}
-%define version 0.73
-%define release %mkrel 1
+%define upstream_name    PDF-API2
+%define upstream_version 0.73
 
-Name:           %{name}
-Version:        %{version}
-Release:        %{release}
-Summary:        PDF-API2 Perl module
-License:        Artistic
-Group:          Development/Perl
-URL:            http://search.cpan.org/dist/%{module}
-Source:         http://www.cpan.org/modules/by-module/PDF/%{module}-%{version}.tar.gz
-Patch:          %{name}-0.73-man-pages.patch
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary:    PDF-API2 Perl module
+License:    Artistic
+Group:      Development/Perl
+URL:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/PDF/%{upstream_name}-%{upstream_version}.tar.gz
+Patch0:     %{name}-0.73-man-pages.patch
+
 BuildRequires:  perl(Compress::Zlib)
-Requires:       fonts-ttf-dejavu
 Buildarch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
+Requires:       fonts-ttf-dejavu
 
 %description
 This module is 'The Next Generation' of Text::PDF::API which initially 
 provided a nice API around the Text::PDF::* modules created by Martin Hosken.
 
 %prep
-%setup -q  -n %{module}-%{version}
-%patch -p 1
+%setup -q -n %{upstream_name}-%{upstream_version}
+%patch0 -p 1
 find contrib -type f | xargs perl -pi -e 's|^#!/usr/local/bin/perl|#!/usr/bin/perl|' 
 
 %build
