@@ -3,7 +3,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Release:    %mkrel 2
 
 Summary:    PDF-API2 Perl module
 License:    Artistic
@@ -25,6 +25,9 @@ provided a nice API around the Text::PDF::* modules created by Martin Hosken.
 %setup -q -n %{upstream_name}-%{upstream_version}
 %patch0 -p 1
 find contrib -type f | xargs perl -pi -e 's|^#!/usr/local/bin/perl|#!/usr/bin/perl|' 
+
+# fix the permissions of the files that will be doc'ed
+chmod 644 AUTHORS CONTACT COPYING INSTALL LICENSE README TODO VERSION contrib/* examples/*
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
