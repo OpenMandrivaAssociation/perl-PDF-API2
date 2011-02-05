@@ -1,22 +1,21 @@
 %define upstream_name    PDF-API2
-%define upstream_version 0.73
+%define upstream_version 2.016
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 3
+Release:    %mkrel 1
 
 Summary:    PDF-API2 Perl module
 License:    Artistic
 Group:      Development/Perl
 URL:        http://search.cpan.org/dist/%{upstream_name}
 Source0:    http://www.cpan.org/modules/by-module/PDF/%{upstream_name}-%{upstream_version}.tar.gz
-Patch0:     %{name}-0.73-man-pages.patch
-Patch1:     %{name}-0.73-fix-program-output.patch
-
+Patch1:     %{name}-2.016-fix-program-output.patch
 BuildRequires:  perl(Compress::Zlib)
+BuildRequires:  perl(Font::TTF::Font)
 Buildarch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 Requires:       fonts-ttf-dejavu
+BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 This module is 'The Next Generation' of Text::PDF::API which initially 
@@ -24,13 +23,9 @@ provided a nice API around the Text::PDF::* modules created by Martin Hosken.
 
 %prep
 %setup -q -n %{upstream_name}-%{upstream_version}
-%patch0 -p 1
 %patch1 -p 1
 find contrib -type f | xargs \
     perl -pi -e 's|^#!/usr/local/bin/perl|#!/usr/bin/perl|' 
-
-# fix the permissions of the files that will be doc'ed
-chmod 644 AUTHORS CONTACT COPYING INSTALL LICENSE README TODO VERSION examples/*
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -54,7 +49,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-, root, root)
-%doc AUTHORS CONTACT COPYING INSTALL LICENSE README TODO VERSION examples
+%doc Changes CONTACT HACKING LICENSE PATENTS README examples
 %{perl_vendorlib}/PDF
 %{_mandir}/*/*
 %{_bindir}/*
