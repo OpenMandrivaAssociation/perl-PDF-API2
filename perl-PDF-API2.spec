@@ -1,5 +1,5 @@
 %define upstream_name    PDF-API2
-%define upstream_version 2.016
+%define upstream_version 2.018
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
@@ -10,7 +10,6 @@ License:    Artistic
 Group:      Development/Perl
 URL:        http://search.cpan.org/dist/%{upstream_name}
 Source0:    http://www.cpan.org/modules/by-module/PDF/%{upstream_name}-%{upstream_version}.tar.gz
-Patch1:     %{name}-2.016-fix-program-output.patch
 BuildRequires:  perl(Compress::Zlib)
 BuildRequires:  perl(Font::TTF::Font)
 Buildarch:      noarch
@@ -23,7 +22,6 @@ provided a nice API around the Text::PDF::* modules created by Martin Hosken.
 
 %prep
 %setup -q -n %{upstream_name}-%{upstream_version}
-%patch1 -p 1
 find contrib -type f | xargs \
     perl -pi -e 's|^#!/usr/local/bin/perl|#!/usr/bin/perl|' 
 
