@@ -1,5 +1,5 @@
 %define upstream_name    PDF-API2
-%define upstream_version 2.018
+%define upstream_version 2.019
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
