@@ -1,15 +1,15 @@
 %define upstream_name    PDF-API2
-%define upstream_version 2.019
+%define upstream_version 2.020
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	2
+Release:	1
 
 Summary:	PDF-API2 Perl module
 License:	Artistic
 Group:		Development/Perl
 URL:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/PDF/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/PDF/PDF-API2-%{upstream_version}.tar.gz
 
 BuildRequires:	 perl-devel
 BuildRequires:	 perl(Compress::Zlib)
@@ -43,7 +43,7 @@ install -d -m 755 %{buildroot}%{_bindir}
 install -m 755 contrib/* %{buildroot}%{_bindir}
 
 %files
-%doc Changes CONTACT HACKING LICENSE PATENTS README examples
+%doc Changes CONTACT LICENSE PATENTS README examples
 %{perl_vendorlib}/PDF
 %{_mandir}/*/*
 %{_bindir}/*
@@ -180,4 +180,5 @@ install -m 755 contrib/* %{buildroot}%{_bindir}
 
 * Tue Feb 17 2004 Lenny Cartier <lenny@mandrakesoft.com> 0.3r77-1mdk
 - 0.3r77
+
 
