@@ -40,7 +40,7 @@ install -d -m 755 %{buildroot}%{_bindir}
 install -m 755 contrib/* %{buildroot}%{_bindir}
 
 %files
-%doc Changes CONTACT LICENSE PATENTS README examples
+%doc Changes LICENSE PATENTS README
 %{perl_vendorlib}/PDF
 %{_mandir}/*/*
 %{_bindir}/*
