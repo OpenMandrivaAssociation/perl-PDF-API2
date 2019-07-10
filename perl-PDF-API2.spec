@@ -1,9 +1,9 @@
 %define upstream_name    PDF-API2
-%define upstream_version 2.020
+%define upstream_version 2.034
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Release:	1
 
 Summary:	PDF-API2 Perl module
 License:	Artistic
@@ -28,13 +28,10 @@ find contrib -type f | xargs \
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-%make
-
-%check
-make test
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 rm -f %{buildroot}%{perl_vendorlib}/PDF/API2/Win32.pm
 rm -f %{buildroot}%{perl_vendorlib}/PDF/API2/Basic/TTF/Win32.pm
 rm -rf %{buildroot}%{perl_vendorlib}/PDF/API2/fonts
