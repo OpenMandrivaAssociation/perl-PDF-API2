@@ -1,15 +1,15 @@
 %define upstream_name    PDF-API2
-%define upstream_version 2.037
+%define upstream_version 2.048
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
+Version:	%{upstream_version}
 Release:	1
 
 Summary:	PDF-API2 Perl module
 License:	Artistic
 Group:		Development/Perl
-URL:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/PDF/PDF-API2-%{upstream_version}.tar.gz
+URL:		https://github.com/ssimms/pdfapi2
+Source0:	https://cpan.metacpan.org/authors/id/S/SS/SSIMMS/PDF-API2-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	 perl-devel
