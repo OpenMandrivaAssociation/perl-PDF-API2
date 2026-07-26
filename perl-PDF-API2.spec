@@ -1,15 +1,13 @@
 %define upstream_name    PDF-API2
-%define upstream_version 2.048
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	1
+Version:	2.048
+Release:	2
 
 Summary:	PDF-API2 Perl module
 License:	Artistic
 Group:		Development/Perl
 URL:		https://github.com/ssimms/pdfapi2
-Source0:	https://cpan.metacpan.org/authors/id/S/SS/SSIMMS/PDF-API2-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/S/SS/SSIMMS/PDF-API2-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	 perl-devel
@@ -23,7 +21,7 @@ This module is 'The Next Generation' of Text::PDF::API which initially
 provided a nice API around the Text::PDF::* modules created by Martin Hosken.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 find contrib -type f | xargs \
     perl -pi -e 's|^#!/usr/local/bin/perl|#!/usr/bin/perl|' 
 
@@ -71,9 +69,7 @@ install -m 755 contrib/* %{buildroot}%{_bindir}
 
 * Wed Jul 29 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 0.730.0-1mdv2011.0
 + Revision: 404288
-- rebuild using %%perl_convert_version
-
-* Thu May 07 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.73-1mdv2010.0
+- rebuild using %2.048 Thu May 07 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.73-1mdv2010.0
 + Revision: 373005
 - new version
 
